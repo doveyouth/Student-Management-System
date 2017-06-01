@@ -58,7 +58,7 @@ create table student
 
 
 
-create table open 
+create table kaishe 
 
 (
 
@@ -66,7 +66,7 @@ create table open
 
    courseid                 integer                        not null,
 
-   constraint PK_open primary key clustered (majorid, courseid)
+   constraint PK_kaishe primary key clustered (majorid, courseid)
 
 );
 
@@ -166,7 +166,7 @@ alter table student
 
 
 
-alter table open
+alter table kaishe
 
    add constraint FK4 foreign key (majorid)
 
@@ -178,7 +178,7 @@ alter table open
 
 
 
-alter table open
+alter table kaishe
 
    add constraint FK5 foreign key (courseid)
 
@@ -229,7 +229,7 @@ delimiter //
 
 create trigger stutrigger1
 
- after update on student
+before update on student
 
  for each row
 
@@ -264,7 +264,7 @@ delimiter //
 
 create trigger coursetrigger1
 
- after update on course
+ before update on course
  
  for each row
 
@@ -295,3 +295,28 @@ begin
 delete from kaishe where kaishe.courseid=old.courseid;
 
 end//
+create procedure updategrade(
+
+		IN studentid char(20),
+		
+    	IN newcourseid	char(20),
+		
+		IN newgrade  char(4)
+	)
+
+	update choose
+
+	set coursegrade=newgrade
+	
+	where id=studentid and courseid=newcourseid;
+	
+	create view unpass as
+
+		select course.coursename, choose.coursegrade
+
+    		from course,choose 
+
+    		where course.courseid=choose.courseid and choose.grade<60
+			
+			GROUP BY course.coursename, choose.coursegrade;
+
