@@ -316,7 +316,7 @@ create procedure updategrade(
 
     		from course,choose 
 
-    		where course.courseid=choose.courseid and choose.grade<60
+    		where course.courseid=choose.courseid and choose.coursegrade<60
 			
 			GROUP BY course.coursename, choose.coursegrade;
 
