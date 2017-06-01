@@ -1,16 +1,112 @@
+create table major 
 
-create table course 
 (
 
-   coursename				   char(99)						 not null,
+   majorname                  char(99)                      not null,
 
-   courseid					integer						   not null,
+   majorid                 integer                        not null,
 
-   teacherid				 integer						null,
+   constraint PK_major primary key (majorid)
 
-   hour					  integer						 null,
+);
 
-   credit					integer						   null,
+
+
+create table assistant 
+
+(
+
+   id                   integer                        not null,
+
+   teacherid                 integer                        null,
+
+   name                   char(99)                      not null,
+
+   majorid                 integer                        null,
+
+   gender                   char(99)                      null,
+
+   grade                   integer                        null,
+
+   assistantid                 integer                        null,
+
+   constraint PK_assistant primary key clustered (id)
+
+);
+
+
+
+create table student 
+
+(
+
+   name                   char(99)                      not null,
+
+   id                   integer                        not null,
+
+   majorid                 integer                        null,
+
+   gender                   char(99)                      null,
+
+   grade                   integer                        null,
+
+   constraint PK_student primary key (id)
+
+);
+
+
+
+
+
+create table open 
+
+(
+
+   majorid                 integer                        not null,
+
+   courseid                 integer                        not null,
+
+   constraint PK_open primary key clustered (majorid, courseid)
+
+);
+
+
+
+
+
+create table teacher 
+
+(
+
+   name                   char(99)                      not null,
+
+   gender                   char(99)                      null,
+
+   post                  char(99)                      null,
+
+   teacherid                 integer                        not null,
+
+   constraint PK_teacher primary key (teacherid)
+
+);
+
+
+
+
+
+create table course 
+
+(
+
+   coursename                  char(99)                      not null,
+
+   courseid                 integer                        not null,
+
+   teacherid                 integer                        null,
+
+   hour                   integer                        null,
+
+   credit                   integer                        null,
 
    constraint PK_course primary key (courseid)
 
@@ -24,11 +120,11 @@ create table choose
 
 (
 
-   id					integer						   not null,
+   id                   integer                        not null,
 
-   courseid					integer						   not null,
+   courseid                 integer                        not null,
 
-   coursegrade				   integer						  null,
+   coursegrade                 integer                        null,
 
    constraint PK_choose primary key clustered (id, courseid)
 
@@ -38,11 +134,11 @@ alter table assistant
 
    add constraint FK1 foreign key (id)
 
-	  references student (id)
+      references student (id)
 
-	  on update restrict
+      on update restrict
 
-	  on delete restrict;
+      on delete restrict;
 
 
 
@@ -50,11 +146,11 @@ alter table assistant
 
    add constraint FK2 foreign key (teacherid)
 
-	  references teacher (teacherid)
+      references teacher (teacherid)
 
-	  on update restrict
+      on update restrict
 
-	  on delete restrict;
+      on delete restrict;
 
 
 
@@ -62,35 +158,35 @@ alter table student
 
    add constraint FK3 foreign key (majorid)
 
-	  references major (majorid)
+      references major (majorid)
 
-	  on update restrict
+      on update restrict
 
-	  on delete restrict;
+      on delete restrict;
 
 
 
-alter table kaishe
+alter table open
 
    add constraint FK4 foreign key (majorid)
 
-	  references major (majorid)
+      references major (majorid)
 
-	  on update restrict
+      on update restrict
 
-	  on delete restrict;
+      on delete restrict;
 
 
 
-alter table kaishe
+alter table open
 
    add constraint FK5 foreign key (courseid)
 
-	  references course (courseid)
+      references course (courseid)
 
-	  on update restrict
+      on update restrict
 
-	  on delete restrict;
+      on delete restrict;
 
 
 
@@ -98,20 +194,23 @@ alter table course
 
    add constraint FK6 foreign key (teacherid)
 
-	  references teacher (teacherid)
+      references teacher (teacherid)
 
-	  on update restrict
+      on update restrict
 
-	  on delete restrict;
+      on delete restrict;
+
+
+
 alter table choose
 
    add constraint FK7 foreign key (id)
 
-	  references student (id)
+      references student (id)
 
-	  on update restrict
+      on update restrict
 
-	  on delete restrict;
+      on delete restrict;
 
 
 
@@ -119,11 +218,12 @@ alter table choose
 
    add constraint FK8 foreign key (courseid)
 
-	  references course (courseid)
+      references course (courseid)
 
-	  on update restrict
+      on update restrict
 
-	  on delete restrict;
+      on delete restrict;
+
 
 delimiter //
 
