@@ -1,90 +1,132 @@
-create table 专业 
+create table major 
 (
-   专业名                  char(256)                      not null,
-   专业代码                 integer                        not null,
-   constraint PK_专业 primary key (专业代码)
+   majorname                  char(256)                      not null,
+   majorid                 integer                        not null,
+   constraint PK_major primary key (majorid)
 );
 
-create table 助教 
+create table assistant 
 (
-   学号                   integer                        not null,
-   教师编号                 integer                        null,
-   姓名                   char(256)                      not null,
-   专业代码                 integer                        null,
-   性别                   char(256)                      null,
-   年级                   integer                        null,
-   助教编号                 integer                        null,
-   constraint PK_助教 primary key clustered (学号)
+   id                   integer                        not null,
+   teacherid                 integer                        null,
+   name                   char(256)                      not null,
+   majorid                 integer                        null,
+   gender                   char(256)                      null,
+   grade                   integer                        null,
+   assistantid                 integer                        null,
+   constraint PK_assistant primary key clustered (id)
 );
 
-create table 学生 
+create table student 
 (
-   姓名                   char(256)                      not null,
-   学号                   integer                        not null,
-   专业代码                 integer                        null,
-   性别                   char(256)                      null,
-   年级                   integer                        null,
-   constraint PK_学生 primary key (学号)
-);
-
-
-create table 开设 
-(
-   专业代码                 integer                        not null,
-   课程代码                 integer                        not null,
-   constraint PK_开设 primary key clustered (专业代码, 课程代码)
+   name                   char(256)                      not null,
+   id                   integer                        not null,
+   majorid                 integer                        null,
+   gender                   char(256)                      null,
+   grade                   integer                        null,
+   constraint PK_student primary key (id)
 );
 
 
-create table 教师 
+create table open 
 (
-   姓名                   char(256)                      not null,
-   性别                   char(256)                      null,
-   职称                   char(256)                      null,
-   教师编号                 integer                        not null,
-   constraint PK_教师 primary key (教师编号)
+   majorid                 integer                        not null,
+   courseid                 integer                        not null,
+   constraint PK_open primary key clustered (majorid, courseid)
 );
 
 
-create table 课程 
+create table teacher 
 (
-   课程名                  char(256)                      not null,
-   课程代码                 integer                        not null,
-   教师编号                 integer                        null,
-   课时                   integer                        null,
-   学分                   integer                        null,
-   constraint PK_课程 primary key (课程代码)
+   name                   char(256)                      not null,
+   gender                   char(256)                      null,
+   post                  char(256)                      null,
+   teacherid                 integer                        not null,
+   constraint PK_teacher primary key (teacherid)
 );
 
 
-create table 选课 
+create table course 
 (
-   学号                   integer                        not null,
-   课程代码                 integer                        not null,
-   课程成绩                 integer                        null,
-   constraint PK_选课 primary key clustered (学号, 课程代码)
+   coursename                  char(256)                      not null,
+   courseid                 integer                        not null,
+   teacherid                 integer                        null,
+   hour                   integer                        null,
+   credit                   integer                        null,
+   constraint PK_course primary key (courseid)
 );
+
+
+create table choose 
+(
+   id                   integer                        not null,
+   courseid                 integer                        not null,
+   coursegrade                 integer                        null,
+   constraint PK_choose primary key clustered (id, courseid)
+);
+alter table assistant
+   add constraint FK1 foreign key (id)
+      references student (id)
+      on update restrict
+      on delete restrict;
+
+alter table assistant
+   add constraint FK2 foreign key ()
+      references teacher (id)
+      on update restrict
+      on delete restrict;
+
+alter table student
+   add constraint FK3 foreign key (majorid)
+      references major (majorid)
+      on update restrict
+      on delete restrict;
+
+alter table open
+   add constraint FK4 foreign key (majorid)
+      references major (majorid)
+      on update restrict
+      on delete restrict;
+
+alter table open
+   add constraint FK5 foreign key (courseid)
+      references course (courseid)
+      on update restrict
+      on delete restrict;
+
+alter table course
+   add constraint FK6 foreign key (teacherid)
+      references teacher (teacherid)
+      on update restrict
+      on delete restrict;
+
+alter table choose
+   add constraint FK7 foreign key (id)
+      references student (id)
+      on update restrict
+      on delete restrict;
+
+alter table choose
+   add constraint FK8 foreign key (courseid)
+      references course (courseid)
+      on update restrict
+      on delete restrict;
+delimiter //
 create trigger stutrigger
- on 学生
- for update
- AS
- if update(学号)
+ after update on student(id)
+ for each row
  begin
- update 选课
- set 学号=i.学号
- from 选课 br,deleted d,inserted i
- where br.学号=d.学号
- end
-GO
+ update choose
+ set id=i.id
+ from choose br,deleted d,inserted i
+ where br.id=d.id;
+ end//
+delimiter //
 create trigger coursetrigger
- on 课程
- for update
- AS
- if update(课程代码)
+ after update on course(courseid)
  begin
- update 开设
- set 课程代码=i.课程代码
- from 开设 br,deleted d,inserted i
- where br.课程代码=d.课程代码
- end
-GO
+ update open
+ set courseid=i.courseid
+ from open br,deleted d,inserted i
+ where br.courseid=d.courseid;
+ end//
