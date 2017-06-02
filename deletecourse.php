@@ -8,22 +8,7 @@ if (!$con)
 mysql_select_db("yyhtest", $con);
 
 
-$sql="DELETE FROM kaishe
-WHERE courseid='$_POST[courseid]'";
-if (!mysql_query($sql,$con))
-  {
-  die('Error: ' . mysql_error());
-  }
-echo "1 record added";
-$sql="DELETE FROM choose
-WHERE courseid='$_POST[courseid]'";
-if (!mysql_query($sql,$con))
-  {
-  die('Error: ' . mysql_error());
-  }
-echo "1 record added";
-$sql="DELETE FROM course
-WHERE courseid='$_POST[courseid]'";
+$sql="call deletecourse('$_POST[courseid]')";
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());

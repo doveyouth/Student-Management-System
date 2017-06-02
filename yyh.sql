@@ -241,7 +241,7 @@ end//
 
 delimiter //
 
-create trigger coursetrigger1
+create trigger coursetrigger
 
  before update on course
  
@@ -261,19 +261,6 @@ end if;
 
  end//
 
-delimiter //
-
-create trigger coursetrigger2
-
-after delete on course
-
-for	 each row 
-
-begin
-
-delete from kaishe where kaishe.courseid=old.courseid;
-
-end//
 
 delimiter //
 
@@ -302,5 +289,31 @@ create procedure updategrade(
     		from choose 
 
     		where choose.coursegrade<60;
+			
+delimiter //
+
+create procedure deletecourse(
+		
+    	IN newcourseid	char(20)
+	)
+	begin
+	
+  START TRANSACTION:
+  
+  DELETE FROM kaishe
+  
+ WHERE courseid=newcourseid;
+ 
+ DELETE FROM choose
+ 
+ WHERE courseid=newcourseid;
+ 
+ DELETE FROM course
+ 
+ WHERE courseid=newcourseid;
+ 
+ commit;
+ 
+ end//
 			
 
