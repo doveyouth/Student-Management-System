@@ -7,10 +7,9 @@ if (!$con)
   }
 mysql_select_db("yyhtest", $con);
 
-
-$sql=" INSERT INTO choose(id，courseid)
+$sql=" INSERT INTO choose
 VALUES
-('$_POST[id]','$_POST[courseid]')";
+('$_POST[id]','$_POST[courseid]',NULL)";
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());
