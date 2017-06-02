@@ -297,12 +297,10 @@ create procedure updategrade(
 	
 	create view unpass as
 
-		select course.coursename, choose.coursegrade
+		select *
 
-    		from course,choose 
+    		from choose 
 
-    		where course.courseid=choose.courseid and choose.coursegrade<60
-			
-			GROUP BY course.coursename, choose.coursegrade;
+    		where choose.coursegrade<60;
 			
 
