@@ -9,7 +9,7 @@ mysql_select_db("yyhtest", $con);
 
 $sql="INSERT INTO course(coursename，courseid，teacherid，keshi，credit)
 VALUES
-('$_POST[coursename]','$_POST[courseid]'，'$_POST[teacherid]'，'$_POST[keshi]'，'$_POST[credit]')";
+('$_POST[coursename]','$_POST[courseid]','$_POST[teacherid]','$_POST[keshi]','$_POST[credit]')";
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());
