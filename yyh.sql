@@ -263,20 +263,6 @@ end if;
 
 delimiter //
 
-	create trigger gendercheck
-
-	after insert on teacher
-
-	for each row
-
-	begin
-	
-	set teacher.gender='unknown' where teacher.gender not in('male','female');
-
-	end//
-	
-delimiter //
-
 create procedure updategrade(
 
 		IN studentid char(20),
