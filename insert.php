@@ -12,7 +12,7 @@ VALUES
 ('$_POST[coursename]','$_POST[courseid]','$_POST[teacherid]','$_POST[keshi]','$_POST[credit]')";
 if (!mysql_query($sql,$con))
   {
-  die('Error: ' . mysql_error());
+  die('Error1: ' . mysql_error());
   }
 echo "1 record added";
 
@@ -21,7 +21,7 @@ VALUES
 ('$_POST[majorid]','$_POST[courseid]')";
 if (!mysql_query($sql,$con))
   {
-  die('Error: ' . mysql_error());
+  die('Error2: ' . mysql_error());
   }
 echo "1 record added";
 echo readfile("insertreturn.html");
