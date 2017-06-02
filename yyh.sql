@@ -104,7 +104,7 @@ create table course
 
    teacherid                 integer                        null,
 
-   hour                   integer                        null,
+   keshi                   integer                        null,
 
    credit                   integer                        null,
 
@@ -326,22 +326,4 @@ create procedure updategrade(
 			
 			GROUP BY course.coursename, choose.coursegrade;
 			
- delimiter //
-			
-create procedure xuanke(
-	
-	    IN studentid char(20),
-			
-		IN newcourseid char(20)
-	)
-	begin
-	
-   select student.id,kaishe.courseid into t from student,kaishe where student.majorid=kaishe.majorid and student.id=studentid group by id,courseid;
-	
-    if newcourseid = t.courseid then
-	
-	insert into choose values (studentid,newcourseid,NULL);
-	
-	end if;
-	
-	end//
+
