@@ -1,6 +1,6 @@
 <?php
 
-$con = mysql_connect('www.nkuliz.com','root','qwer1234QWER');
+$con = mysql_connect('localhsot','root','qwer1234QWER');
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
@@ -26,6 +26,5 @@ while($row = mysql_fetch_array($result))
   }
   echo "</table>";
 
-  echo readfile("insertreturn.html");
 mysql_close($con);
 ?>

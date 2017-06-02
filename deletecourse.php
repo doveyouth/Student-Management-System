@@ -1,6 +1,6 @@
 <?php
 
-$con = mysql_connect('www.nkuliz.com','root','qwer1234QWER');
+$con = mysql_connect('localhost','root','qwer1234QWER');
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
@@ -15,7 +15,6 @@ if (!mysql_query($sql,$con))
   die('Error: ' . mysql_error());
   }
 echo "1 record added";
-
 echo readfile("insertreturn.html");
 mysql_close($con);
 ?>

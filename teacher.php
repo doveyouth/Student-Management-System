@@ -30,6 +30,6 @@ while($row = mysql_fetch_array($result))
   }
   echo "</table>";
 
-  echo readfile("insertreturn.html");
 mysql_close($con);
+
 ?>
