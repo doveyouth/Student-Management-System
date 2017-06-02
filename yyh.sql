@@ -270,8 +270,8 @@ delimiter //
 	for each row
 
 	begin
-
-	delete from teacher where teacher.gender not in('male','female');
+	
+	set teacher.gender='unknown' where teacher.gender not in('male','female');
 
 	end//
 	
