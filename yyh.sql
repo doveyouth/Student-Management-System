@@ -261,7 +261,20 @@ end if;
 
  end//
 
+delimiter //
 
+	create trigger gendercheck
+
+	after insert on student
+
+	for each row
+
+	begin
+
+	delete from student where student.gender not in('male','female');
+
+	end//
+	
 delimiter //
 
 create procedure updategrade(
@@ -291,16 +304,4 @@ create procedure updategrade(
     		where choose.coursegrade<60;
 			
 
-delimiter //
 
-	create trigger gendercheck
-
-	after insert on student
-
-	for each row
-
-	begin
-
-		delete from student where gender not in('male','female');
-
-	end//
