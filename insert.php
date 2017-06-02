@@ -5,7 +5,7 @@ if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
-mysql_select_db("test1", $con);
+mysql_select_db("yyhtest", $con);
 
 
 $sql="INSERT INTO course(coursename，courseid，teacherid，keshi，credit)

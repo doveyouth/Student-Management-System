@@ -1,17 +1,17 @@
 <?php
 
-$con = mysql_connect('localhost','root','');
+$con = mysql_connect('www.nkuliz.com','root','qwer1234QWER');
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
-mysql_select_db("学生管理系统", $con);
+mysql_select_db("yyhtest", $con);
 
 
-$sql="UPDATE 课程
-	SET 课程名='$_POST[课程名]',教师编号='$_POST[教师编号]',
-	课时='$_POST[课时]',学分='$_POST[学分]'                                                       
-	WHERE 课程代码='$_POST[课程代码]';
+$sql="UPDATE course
+	SET coursename='$_POST[coursename]',teacherid='$_POST[teacherid]',
+	keshi='$_POST[keshi]',credit='$_POST[credit]'                                                       
+	WHERE courseid='$_POST[courseid]';
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());

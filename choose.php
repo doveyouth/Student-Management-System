@@ -1,16 +1,16 @@
 <?php
 
-$con = mysql_connect('localhost','root','');
+$con = mysql_connect('www.nkuliz.com','root','qwer1234QWER');
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
-mysql_select_db("学生管理系统", $con);
+mysql_select_db("yyhtest", $con);
 
 
 $sql="INSERT INTO choose(id，courseid)
 VALUES
-('$_POST[学号]','$_POST[课程代码]')";
+('$_POST[id]','$_POST[courseid]')";
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());

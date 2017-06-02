@@ -1,15 +1,15 @@
 <?php
 
-$con = mysql_connect('localhost','root','');
+$con = mysql_connect('www.nkuliz.com','root','qwer1234QWER');
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
-mysql_select_db("学生管理系统", $con);
+mysql_select_db("yyhtest", $con);
 
 
-$sql="DELETE FROM 开设
-WHERE 专业代码='$_POST[专业代码]' and 课程代码='$_POST[课程代码]'";
+$sql="DELETE FROM kaishe
+WHERE majorid='$_POST[majorid]' and courseid='$_POST[courseid]'";
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());
