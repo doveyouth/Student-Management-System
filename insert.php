@@ -7,7 +7,7 @@ if (!$con)
 mysql_select_db("yyhtest", $con);
 
 
-$sql="INSERT INTO course(coursename，courseid，teacherid，keshi，credit)
+$sql="INSERT INTO course
 VALUES
 ('$_POST[coursename]','$_POST[courseid]','$_POST[teacherid]','$_POST[keshi]','$_POST[credit]')";
 if (!mysql_query($sql,$con))
@@ -16,7 +16,7 @@ if (!mysql_query($sql,$con))
   }
 echo "1 record added";
 
-$sql="INSERT INTO kaishe(majorid，courseid)
+$sql="INSERT INTO kaishe
 VALUES
 ('$_POST[majorid]','$_POST[courseid]')";
 if (!mysql_query($sql,$con))
