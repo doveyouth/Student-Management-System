@@ -132,18 +132,6 @@ create table choose
 
 alter table assistant
 
-   add constraint FK1 foreign key (id)
-
-      references student (id)
-
-      on update restrict
-
-      on delete restrict;
-
-
-
-alter table assistant
-
    add constraint FK2 foreign key (teacherid)
 
       references teacher (teacherid)
