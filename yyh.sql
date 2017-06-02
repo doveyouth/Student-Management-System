@@ -265,13 +265,13 @@ delimiter //
 
 	create trigger gendercheck
 
-	after insert on student
+	after insert on teacher
 
 	for each row
 
 	begin
 
-	delete from student where student.gender not in('male','female');
+	delete from teacher where teacher.gender not in('male','female');
 
 	end//
 	
