@@ -11,7 +11,7 @@ mysql_select_db("yyhtest", $con);
 $sql="UPDATE course
 	SET coursename='$_POST[coursename]',teacherid='$_POST[teacherid]',
 	keshi='$_POST[keshi]',credit='$_POST[credit]'                                                       
-	WHERE courseid='$_POST[courseid]';
+	WHERE courseid='$_POST[courseid]'";
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());

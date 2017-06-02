@@ -7,7 +7,7 @@ if (!$con)
   }
 mysql_select_db("yyhtest", $con);
 
- $sql="call updategrade('$_POST[id]','$_POST[courseid]','$_POST[coursegrade]');";
+ $sql="call updategrade('$_POST[id]','$_POST[courseid]','$_POST[coursegrade]')";
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());

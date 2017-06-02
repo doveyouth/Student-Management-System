@@ -8,8 +8,7 @@ if (!$con)
 mysql_select_db("yyhtest", $con);
 
 
-$sql=" if '$_POST[courseid]' is in (select student.id,kaishe.courseid from student,kaishe where student.majorid=kaishe.majorid and student.id='$_POST[id]' group by id,courseid;) then
-INSERT INTO choose(id，courseid)
+$sql=" INSERT INTO choose(id，courseid)
 VALUES
 ('$_POST[id]','$_POST[courseid]')";
 if (!mysql_query($sql,$con))
