@@ -290,30 +290,4 @@ create procedure updategrade(
 
     		where choose.coursegrade<60;
 			
-delimiter //
-
-create procedure deletecourse(
-		
-    	IN newcourseid	char(20)
-	)
-	begin
-	
-  START TRANSACTION:
-  
-  DELETE FROM kaishe
-  
- WHERE courseid=newcourseid;
- 
- DELETE FROM choose
- 
- WHERE courseid=newcourseid;
- 
- DELETE FROM course
- 
- WHERE courseid=newcourseid;
- 
- commit;
- 
- end//
-			
 
