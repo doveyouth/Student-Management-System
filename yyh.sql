@@ -295,6 +295,9 @@ begin
 delete from kaishe where kaishe.courseid=old.courseid;
 
 end//
+
+delimiter //
+
 create procedure updategrade(
 
 		IN studentid char(20),
@@ -303,12 +306,15 @@ create procedure updategrade(
 		
 		IN newgrade  char(4)
 	)
-
+	begin
+	
 	update choose
 
 	set coursegrade=newgrade
 	
 	where id=studentid and courseid=newcourseid;
+	
+	end//
 	
 	create view unpass as
 
@@ -319,4 +325,23 @@ create procedure updategrade(
     		where course.courseid=choose.courseid and choose.coursegrade<60
 			
 			GROUP BY course.coursename, choose.coursegrade;
-
+			
+ delimiter //
+			
+create procedure xuanke(
+	
+	    IN studentid char(20),
+			
+		IN newcourseid char(20)
+	)
+	begin
+	
+   select student.id,kaishe.courseid into t from student,kaishe where student.majorid=kaishe.majorid and student.id=studentid group by id,courseid;
+	
+    if newcourseid = t.courseid then
+	
+	insert into choose values (studentid,newcourseid,NULL);
+	
+	end if;
+	
+	end//
