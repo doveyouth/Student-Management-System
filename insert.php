@@ -13,7 +13,7 @@ VALUES
 ('$_POST[coursename]','$_POST[courseid]'，'$_POST[teacherid]'，'$_POST[keshi]'，'$_POST[credit]');
 INSERT INTO kaishe(majorid，courseid)
 VALUES
-('$_POST[majorid]','$_POST[courseid]')";
+('$_POST[majorid]','$_POST[courseid]');";
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());
