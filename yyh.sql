@@ -130,21 +130,12 @@ create table choose
 
 );
 
-alter table assistant
-
-   add constraint FK2 foreign key (teacherid)
-
-      references teacher (teacherid)
-
-      on update restrict
-
-      on delete restrict;
 
 
 
 alter table student
 
-   add constraint FK3 foreign key (majorid)
+   add constraint FK1 foreign key (majorid)
 
       references major (majorid)
 
@@ -156,7 +147,7 @@ alter table student
 
 alter table kaishe
 
-   add constraint FK4 foreign key (majorid)
+   add constraint FK2 foreign key (majorid)
 
       references major (majorid)
 
@@ -168,7 +159,7 @@ alter table kaishe
 
 alter table kaishe
 
-   add constraint FK5 foreign key (courseid)
+   add constraint FK3 foreign key (courseid)
 
       references course (courseid)
 
@@ -180,7 +171,7 @@ alter table kaishe
 
 alter table course
 
-   add constraint FK6 foreign key (teacherid)
+   add constraint FK4 foreign key (teacherid)
 
       references teacher (teacherid)
 
@@ -192,7 +183,7 @@ alter table course
 
 alter table choose
 
-   add constraint FK7 foreign key (id)
+   add constraint FK5 foreign key (id)
 
       references student (id)
 
@@ -204,7 +195,7 @@ alter table choose
 
 alter table choose
 
-   add constraint FK8 foreign key (courseid)
+   add constraint FK6 foreign key (courseid)
 
       references course (courseid)
 
