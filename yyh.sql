@@ -239,27 +239,8 @@ end if;
 
  end//
 
+	
 delimiter //
-
-create procedure updategrade(
-
-		IN studentid char(20),
-		
-    	IN newcourseid	char(20),
-		
-		IN newgrade  char(4)
-	)
-	begin
-	
-	update choose
-
-	set coursegrade=newgrade
-	
-	where id=studentid and courseid=newcourseid;
-	
-	end//
-	
-	delimiter //
 
 create procedure updategrade(
 
@@ -290,7 +271,6 @@ create procedure updategrade(
 			group by name,courseid,coursegrade;
 	
 	
- delimiter //
 
 
 
