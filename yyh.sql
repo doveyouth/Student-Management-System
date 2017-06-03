@@ -213,9 +213,9 @@ delimiter //
 
 	begin
 	
-	set teacher.gender ='unknown'
+	set new.gender ='unknown'
 	
-	where new.gender=teacher.gender and new.gender !='male' and new.gender!='female';
+	where new.gender !='male' and new.gender!='female';
 	 
 	end//
 delimiter //
