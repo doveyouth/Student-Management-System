@@ -293,7 +293,7 @@ create procedure updategrade(
 	
 delimiter //
 
-	create trigger gendercheck
+	create trigger genderchecktrigger
 
 	BEFORE insert on teacher
 
@@ -301,9 +301,11 @@ delimiter //
 
 	begin
 	
-	 IF teacher.gender  in('male','female') then
+	 IF gender  in('male','female') then
+	 
 	 insert into teacher values(new.name,new.gender,new.post,new.teacherid);
-	 instead of 
+	 
 	 end if;
+	 
 	end//
 
