@@ -213,8 +213,6 @@ delimiter //
 
 	begin
 	
-	update teacher
-	
 	set teacher.gender ='unknown'
 	
 	where new.gender=teacher.gender and new.gender !='male' and new.gender!='female';
