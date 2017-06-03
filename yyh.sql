@@ -203,7 +203,23 @@ alter table choose
 
       on delete restrict;
 
+delimiter //
 
+	create trigger genderchecktrigger
+
+	after insert on teacher
+
+	for each row
+
+	begin
+	
+	update teacher
+	
+	set teacher.gender ='unknown'
+	
+	where new.gender=teacher.gender and new.gender !='male' and new.gender!='female';
+	 
+	end//
 delimiter //
 
 create trigger stutrigger1
@@ -291,21 +307,5 @@ create procedure updategrade(
 	
 
 	
-delimiter //
 
-	create trigger genderchecktrigger
-
-	after insert on teacher
-
-	for each row
-
-	begin
-	
-	update teacher
-	
-	set teacher.gender ='unknown'
-	
-	where new.gender=teacher.gender and new.gender not in('male','female');
-	 
-	end//
 
