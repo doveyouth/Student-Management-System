@@ -269,7 +269,36 @@ create procedure updategrade(
     		where choose.coursegrade<60 and student.id=choose.id
 			
 			group by name,courseid,coursegrade;
+			
+delimiter //
+
+create procedure updatestudent(
+
+        IN studentname char(20),
+
+		IN studentid char(20),
+		
+    	IN newmajorid	char(20),
+		
+		IN newgender char(20),
+		
+		IN newgrade  char(4)
+	)
+	begin
 	
+	update unpass 
+	
+	set name=studentname
+	
+	where unpass.name=(select name from student where id=studentid);
+	
+	update student
+
+	set grade=newgrade,name=studentname,majorid=newmajorid,gender=newgender
+	
+	where id=studentid;
+	
+	end//
 	
 
 
