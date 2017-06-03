@@ -7,15 +7,6 @@ if (!$con)
   }
 mysql_select_db("yyhtest", $con);
 
-$sql="update unpass 
-	set name=studentname
-	where unpass.name=(select name from student where id='$_POST[id]')";
-
-if (!mysql_query($sql,$con))
-  {
-  die('Error: ' . mysql_error());
-  }
-echo "1 record added";
 $sql="call updatestudent('$_POST[name]','$_POST[id]','$_POST[majorid]','$_POST[gender]','$_POST[grade]'";
 if (!mysql_query($sql,$con))
   {
