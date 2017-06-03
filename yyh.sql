@@ -286,12 +286,6 @@ create procedure updatestudent(
 	)
 	begin
 	
-	update unpass 
-	
-	set name=studentname
-	
-	where unpass.name=(select name from student where id=studentid);
-	
 	update student
 
 	set grade=newgrade,name=studentname,majorid=newmajorid,gender=newgender
