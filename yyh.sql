@@ -294,7 +294,7 @@ delimiter ;
 			group by name,courseid,coursegrade;
 
   delimiter $$
-create trigger Triggerx before insert
+create trigger Triggerx after insert
 
 on choose for each row
 
