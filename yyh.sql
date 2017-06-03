@@ -207,7 +207,7 @@ delimiter //
 
 	create trigger genderchecktrigger
 
-	after insert on teacher
+	before insert on teacher
 
 	for each row
 
