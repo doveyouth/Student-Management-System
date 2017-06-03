@@ -261,11 +261,11 @@ create procedure updategrade(
 	
 	create view unpass as
 
-		select student.name,course.courseid,course.coursegrade
+		select student.name,choose.courseid,choose.coursegrade
 
     		from student,choose
 
-    		where choose.coursegrade<60 and sthdent.id=course.id
+    		where choose.coursegrade<60 and student.id=choose.id
 			
 			group by name,courseid,coursegrade;
 	
