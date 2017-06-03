@@ -298,8 +298,8 @@ create trigger Triggerx before insert
 on choose for each row
 begin
     IF choose.id>110000 then
-    update course set course.keshi=setcourse.keshi+1
-    where new.courseid = course.course;
+    update course set course.keshi=course.keshi+1
+    where new.courseid = course.courseid;
     end if;
 end$$
 
