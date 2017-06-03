@@ -69,7 +69,7 @@ create table course
 
    teacherid                 integer                        null,
 
-   keshi                   integer                        null,
+   studentnumber                   integer                        null,
 
    credit                   integer                        null,
 
@@ -295,11 +295,13 @@ create procedure updatestudent(
 
   delimiter $$
 create trigger Triggerx before insert
+
 on choose for each row
+
 begin
-    IF choose.id>110000 then
-    update course set course.keshi=course.keshi+1
+	
+    update course set course.studentnumber=course.studentnumber+1
+	
     where new.courseid = course.courseid;
-    end if;
 end$$
 

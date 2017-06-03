@@ -16,7 +16,7 @@ echo "<table border='5'>
 <th>coursename</th>
 <th>courseid</th>
 <th>teacherid</th>
-<th>keshi</th>
+<th>studentnumber</th>
 <th>credit</th>
 </tr>";
 
@@ -26,7 +26,7 @@ while($row = mysql_fetch_array($result))
   echo "<td>" . $row['coursename'] . "</td>";
   echo "<td>" . $row['courseid'] . "</td>";
   echo "<td>" . $row['teacherid'] . "</td>";
-  echo "<td>" . $row['keshi '] . "</td>";
+  echo "<td>" . $row['studentnumber '] . "</td>";
   echo "<td>" . $row['credit'] . "</td>";
   echo "</tr>";
   }
