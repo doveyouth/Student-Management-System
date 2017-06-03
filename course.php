@@ -26,7 +26,7 @@ while($row = mysql_fetch_array($result))
   echo "<td>" . $row['coursename'] . "</td>";
   echo "<td>" . $row['courseid'] . "</td>";
   echo "<td>" . $row['teacherid'] . "</td>";
-  echo "<td>" . $row['studentnumber '] . "</td>";
+  echo "<td>" . $row['studentnumber'] . "</td>";
   echo "<td>" . $row['credit'] . "</td>";
   echo "</tr>";
   }
