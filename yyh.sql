@@ -295,17 +295,17 @@ delimiter //
 
 	create trigger genderchecktrigger
 
-	BEFORE insert on teacher
+	after insert on teacher
 
 	for each row
 
 	begin
 	
-	 IF gender  in('male','female') then
-	 
-	 insert into teacher values(new.name,new.gender,new.post,new.teacherid);
-	 
-	 end if;
+	update teacher
+	
+	set teacher.gender ='unknown'
+	
+	where new.gender=teacher.gender and new.gender not in('male','female');
 	 
 	end//
 
