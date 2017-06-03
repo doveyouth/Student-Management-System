@@ -215,7 +215,7 @@ delimiter //
 	
 	set new.gender ='unknown'
 	
-	where new.gender !='male' and new.gender!='female';
+    where new.gender is NULL;
 	 
 	end//
 delimiter //
