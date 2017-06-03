@@ -9,7 +9,7 @@ mysql_select_db("yyhtest", $con);
 
 $sql="update unpass 
 	set name=studentname
-	where unpss.name=(select name from student where id='$_POST[id]')";
+	where unpass.name=(select name from student where id='$_POST[id]')";
 
 if (!mysql_query($sql,$con))
   {
