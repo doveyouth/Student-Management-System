@@ -281,7 +281,7 @@ create procedure updatestudent(
 	where id=stid;
 	
 	end//
-	
+delimiter ;	
 	
 	create view unpass as
 
