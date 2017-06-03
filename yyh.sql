@@ -288,6 +288,22 @@ create procedure updategrade(
     		from choose 
 
     		where choose.coursegrade<60;
-			
+	
 
+	
+delimiter //
+
+	create trigger gendercheck
+
+	BEFORE insert on teacher
+
+	for each row
+
+	begin
+	
+	 IF teacher.gender  in('male','female') then
+	 insert into teacher values(new.name,new.gender,new.post,new.teacherid);
+	 instead of 
+	 end if;
+	end//
 
