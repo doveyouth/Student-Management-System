@@ -12,28 +12,6 @@ create table major
 
 
 
-create table assistant 
-
-(
-
-   id                   integer                        not null,
-
-   teacherid                 integer                        null,
-
-   name                   char(99)                      not null,
-
-   majorid                 integer                        null,
-
-   gender                   char(99)                      null,
-
-   grade                   integer                        null,
-
-   assistantid                 integer                        null,
-
-   constraint PK_assistant primary key clustered (id)
-
-);
-
 
 
 create table student 
@@ -56,19 +34,6 @@ create table student
 
 
 
-
-
-create table kaishe 
-
-(
-
-   majorid                 integer                        not null,
-
-   courseid                 integer                        not null,
-
-   constraint PK_kaishe primary key clustered (majorid, courseid)
-
-);
 
 
 
@@ -109,6 +74,19 @@ create table course
    credit                   integer                        null,
 
    constraint PK_course primary key (courseid)
+
+);
+
+
+create table kaishe 
+
+(
+
+   majorid                 integer                        not null,
+
+   courseid                 integer                        not null,
+
+   constraint PK_kaishe primary key clustered (majorid, courseid)
 
 );
 
@@ -203,21 +181,7 @@ alter table choose
 
       on delete restrict;
 
-delimiter //
 
-	create trigger genderchecktrigger
-
-	before insert on teacher
-
-	for each row
-
-	begin
-	
-	set new.gender ='unknown'
-	
-    where new.gender is NULL;
-	 
-	end//
 delimiter //
 
 create trigger stutrigger1
@@ -297,13 +261,14 @@ create procedure updategrade(
 	
 	create view unpass as
 
-		select *
+		select student.name,course.courseid,course.coursegrade
 
-    		from choose 
+    		from student,choose
 
-    		where choose.coursegrade<60;
+    		where choose.coursegrade<60 and sthdent.id=course.id
+			
+			group by name,courseid,coursegrade;
 	
-
 	
 
 

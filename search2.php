@@ -13,7 +13,7 @@ $result = mysql_query("SELECT *
 
 echo "<table border='3'>
 <tr>
-<th>id</th>
+<th>name</th>
 <th>courseid</th>
 <th>coursegrade</th>
 </tr>";
@@ -21,7 +21,7 @@ echo "<table border='3'>
 while($row = mysql_fetch_array($result))
   {
   echo "<tr>";
-  echo "<td>" . $row['id'] . "</td>";
+  echo "<td>" . $row['name'] . "</td>";
   echo "<td>" . $row['courseid'] . "</td>";
   echo "<td>" . $row['coursegrade'] . "</td>";
   echo "</tr>";
