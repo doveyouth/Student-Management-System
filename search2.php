@@ -8,8 +8,8 @@ if (!$con)
 mysql_select_db("yyhtest", $con);
 
 
-$result = mysql_query("SELECT *
- from unpass where id='$_POST[id]'");
+$result = mysql_query("SELECT unpass.name,unpass.courseid,unpass.coursegrade
+ from unpass,student where student.id='$_POST[id]' and student.name=unpass.name");
 
 echo "<table border='3'>
 <tr>
