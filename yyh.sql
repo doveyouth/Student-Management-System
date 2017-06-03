@@ -260,27 +260,7 @@ create procedure updategrade(
 	
 	end//
 	
-create procedure updatestudent(
 
-        IN sname char(20),
-
-		IN sid char(20),
-		
-    	IN nmajorid	char(20),
-		
-		IN ngender char(20),
-		
-		IN ngrade  char(4)
-	)
-	begin
-	
-	update student
-
-	set grade=ngrade,name=sname,majorid=nmajorid,gender=ngender
-	
-	where id=stid;
-	
-	end//
 delimiter ;	
 	
 	create view unpass as
